@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         Title="MainWindow" Height="700" Width="700">
-    <Canvas Background="#FF083980">
+    <Canvas Name="Cnvs" Background="#FF083980">
         <Ellipse Height="239" Canvas.Left="220" Stroke="Black" Canvas.Top="241" Width="242">
             <Ellipse.Fill>
                 <ImageBrush ImageSource="Res/Earth.png"/>
