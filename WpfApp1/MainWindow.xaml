@@ -6,6 +6,10 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         Title="MainWindow" Height="700" Width="700">
+	<Window.Resources>
+		<ImageBrush x:Key="meteor" ImageSource="Res\meteor.jpg">
+		</ImageBrush>
+	</Window.Resources>
 	<Canvas Name="Cnvs" Background="#FF083980">
 		<Ellipse Name="earth"  Height="239" Canvas.Left="220"  Canvas.Top="241" Width="242" MouseLeftButtonDown="Ellipse_MouseLeftButtonDown">
 			<Ellipse.Fill>
@@ -13,5 +17,6 @@
 			</Ellipse.Fill>
 		</Ellipse>
 		<Label x:Name="label" Content="Hp: 100" Canvas.Left="10" Canvas.Top="10" Height="44" Width="95" FontSize="24"/>
+		<Label x:Name="label1" Content="Coins: 0" Canvas.Left="510" Canvas.Top="12" FontSize="24"/>
 	</Canvas>
 </Window>
