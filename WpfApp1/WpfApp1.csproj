@@ -97,5 +97,8 @@
   <ItemGroup>
     <Resource Include="Res\Earth.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Res\meteor.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
