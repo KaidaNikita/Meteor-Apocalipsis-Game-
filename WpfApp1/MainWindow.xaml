@@ -6,11 +6,12 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         Title="MainWindow" Height="700" Width="700">
-    <Canvas Name="Cnvs" Background="#FF083980">
-        <Ellipse Height="239" Canvas.Left="220" Stroke="Black" Canvas.Top="241" Width="242">
-            <Ellipse.Fill>
-                <ImageBrush ImageSource="Res/Earth.png"/>
-            </Ellipse.Fill>
-        </Ellipse>
-    </Canvas>
+	<Canvas Name="Cnvs" Background="#FF083980">
+		<Ellipse Name="earth"  Height="239" Canvas.Left="220"  Canvas.Top="241" Width="242" MouseLeftButtonDown="Ellipse_MouseLeftButtonDown">
+			<Ellipse.Fill>
+				<ImageBrush ImageSource="Res/Earth.png"/>
+			</Ellipse.Fill>
+		</Ellipse>
+		<Label x:Name="label" Content="Hp: 100" Canvas.Left="10" Canvas.Top="10" Height="44" Width="95" FontSize="24"/>
+	</Canvas>
 </Window>

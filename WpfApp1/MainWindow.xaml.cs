@@ -25,14 +25,21 @@ namespace WpfApp1
     {
         Random rnd = new Random();
         DispatcherTimer timer = new DispatcherTimer();
+        DispatcherTimer met_tr = new DispatcherTimer();
+        int hp = 100;
         public MainWindow()
         {
             InitializeComponent();
 
             timer.Tick += new EventHandler(Timer_tick);
-            timer.Interval = new TimeSpan(0, 0, 5);
+            timer.Interval = new TimeSpan(0, 0, 3);
             timer.Start();
 
+            met_tr.Tick += new EventHandler(Timer_tick);
+            met_tr.Interval = new TimeSpan(0, 0, 0, 5);
+            met_tr.Start();
+
+            label.Content = "HP: " + hp.ToString();
         }
         private void Timer_tick(object sender, EventArgs e)
         {
@@ -44,8 +51,56 @@ namespace WpfApp1
             };
             el.Fill = Brushes.Green;
             Cnvs.Children.Add(el);
+            el.MouseLeftButtonDown += Meteor_Click;
+            el.Tag = "Meteor";
             Canvas.SetTop(el, rnd.Next(20, 500));
             Canvas.SetLeft(el,rnd.Next(20, 500));
+        }
+
+        private void Meteor_tick(object sender, EventArgs e)
+        {
+            double y = Canvas.GetTop(earth);
+            double x = Canvas.GetLeft(earth);
+
+            for (int i = 0; i < Cnvs.Children.Count; i++)
+            {
+                if (Cnvs.Children[i] is Ellipse&& (Cnvs.Children[i] as Ellipse).Tag=="Meteor")
+                {
+                   
+                  double  x_m = Canvas.GetLeft(Cnvs.Children[i]);
+                    double y_m = Canvas.GetTop(Cnvs.Children[i]);
+                    if (x_m <= x)
+                    {
+                        Canvas.SetLeft(Cnvs.Children[i], x_m += 10);
+                    }
+                    if (x_m >= x)
+                    {
+                        Canvas.SetLeft(Cnvs.Children[i], x_m -= 10);
+                    }
+
+                    if (y_m <= y)
+                    {
+                        Canvas.SetLeft(Cnvs.Children[i], y_m+=10);
+                    }
+                    if (y_m >= y)
+                    {
+                        Canvas.SetLeft(Cnvs.Children[i], y_m -= 10);
+                    }
+                }
+            }
+
+        }
+
+        private void Meteor_Click(object sender, MouseButtonEventArgs e)
+        {
+            hp--;
+            Cnvs.Children.Remove((sender as Ellipse));
+            label.Content = "HP: " + hp.ToString();
+        }
+
+        private void Ellipse_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }
